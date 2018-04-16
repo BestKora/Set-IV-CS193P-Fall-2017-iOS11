@@ -159,12 +159,7 @@ class SetGameViewController: UIViewController, UIDynamicAnimatorDelegate  {
         let alreadyFliedCount =
             matchedSetCardViews.filter{($0.alpha < 1 && $0.alpha > 0)}.count
         if  game.isSet != nil,  game.isSet!, alreadyFliedCount == 0 {
-            tmpCards.forEach{ tmpCard in
-                tmpCard.removeFromSuperview()
-                cardBehavior.removeItem(tmpCard)
-            }
-            tmpCards = []
-            
+
             matchedSetCardViews.forEach {setCardView in
                 setCardView.alpha = 0.2
                 tmpCards += [setCardView.copyCard()]
@@ -175,6 +170,7 @@ class SetGameViewController: UIViewController, UIDynamicAnimatorDelegate  {
                     self?.setsButton.setTitle(" Sets: \(countSets) ", for: .normal)
                     self?.setsButton.alpha = 1
                 }}
+            
             tmpCards.forEach{ tmpCard in
                 boardView.addSubview(tmpCard)
                 cardBehavior.addItem(tmpCard)
