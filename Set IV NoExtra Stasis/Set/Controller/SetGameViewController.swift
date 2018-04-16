@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  Set
@@ -174,19 +175,15 @@ class SetGameViewController: UIViewController, UIDynamicAnimatorDelegate  {
                     self?.setsButton.setTitle(" Sets: \(countSets) ", for: .normal)
                     self?.setsButton.alpha = 1
                 }}
-        }
-         
-           tmpCards.forEach{ tmpCard in
+            tmpCards.forEach{ tmpCard in
                 boardView.addSubview(tmpCard)
                 cardBehavior.addItem(tmpCard)
             }
+        }
     }
     
     func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
-        if  game.isSet != nil,  game.isSet!, tmpCards.count > 0 {
-            tmpCards.forEach { (tmpCard) in
-                cardBehavior.removeItem(tmpCard)
-            }
+        if tmpCards.count > 0 {
         tmpCards.forEach { (tmpCard) in
             UIView.transition(with: tmpCard,
                               duration: 0.5,
@@ -200,6 +197,7 @@ class SetGameViewController: UIViewController, UIDynamicAnimatorDelegate  {
                                      height: 0.8*tmpCard.bounds.height)
             },
                               completion: { (isComplete) in
+                self.cardBehavior.removeItem(tmpCard)
                 tmpCard.addDiscardPile?()
                 tmpCard.removeFromSuperview()
                 self.tmpCards.remove(elements: [tmpCard])

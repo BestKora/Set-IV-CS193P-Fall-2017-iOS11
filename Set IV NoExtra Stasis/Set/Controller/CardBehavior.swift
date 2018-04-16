@@ -38,8 +38,8 @@ class CardBehavior: UIDynamicBehavior
     
     private func snap(_ item: UIDynamicItem) {
         let snap = UISnapBehavior(item: item, snapTo: snapPoint)
-        snap.damping = 0.2
-        addChildBehavior(snap)
+            snap.damping = 0.2
+            addChildBehavior(snap)
     }
     
     func addItem(_ item: UIDynamicItem) {
@@ -56,7 +56,6 @@ class CardBehavior: UIDynamicBehavior
     func removeItem(_ item: UIDynamicItem) {
         collisionBehavior.removeItem(item)
         itemBehavior.removeItem(item)
-        
     }
     
     override init() {
