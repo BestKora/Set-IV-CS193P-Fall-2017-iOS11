@@ -183,7 +183,6 @@ class SetGameViewController: UIViewController, UIDynamicAnimatorDelegate  {
     }
     
     func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
-        if tmpCards.count > 0 {
         tmpCards.forEach { (tmpCard) in
             UIView.transition(with: tmpCard,
                               duration: 0.5,
@@ -202,7 +201,6 @@ class SetGameViewController: UIViewController, UIDynamicAnimatorDelegate  {
                 tmpCard.removeFromSuperview()
                 self.tmpCards.remove(elements: [tmpCard])
             })
-        }
         }
     }
       //     MARK: Tap Gesture Card
